@@ -75,6 +75,10 @@
         $(document).ready(function() {
 	var socket = io();
 
+	socket.on('connect', function() {
+		socket.send('User has connected!');
+	});
+
 	socket.on('message', function(msg) {		
                 $('#messages').append('<li style="color:green" class="bot">'+msg+'</li>');
                 window.scrollTo(0, document.body.scrollHeight);
