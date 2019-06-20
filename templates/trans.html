@@ -73,10 +73,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
         $(document).ready(function() {
-	var socket = io.connect('http://127.0.0.1:5000');
-	socket.on('connect', function() {
-		$('#messages').append('<li > User has connected! </li>');
-	});
+	var socket = io();
+
 	socket.on('message', function(msg) {		
                 $('#messages').append('<li style="color:green" class="bot">'+msg+'</li>');
                 window.scrollTo(0, document.body.scrollHeight);
