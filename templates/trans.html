@@ -8,49 +8,35 @@
 		    padding: 0;
 		    box-sizing: border-box;
 		}
-
 		body {
 		    font: 20px Helvetica, Arial;
 		}
-
-		form {
-                    font: 20px;
-		    background: #000;
-		    padding: 3px;
-		    position: fixed;
-		    bottom: 0;
-		    width: 100%;
-		}
-
-		form input {                  
-		    border: 0;
+		input {
+                                        
+		    border: 1;
 		    padding: 10px;
 		    width: 90%;
 		    margin-right: .5%;
+                    font: 20px;
 		}
-
 		button {
-		    width: 9%;                    
+		    width: 8%;                    
 		    background: rgb(56, 256, 56);
-		    border: none;
+		    border: 1;
 		    padding: 10px;
                     font: 20px;
 		}
-
 		#messages {
 		    list-style-type: none;
 		    margin: 0;
 		    padding: 0;
 		}
-
 		#messages li {
 		    padding: 5px 10px;
 		}
-
 		#messages li:nth-child(odd) {
 		    background: #eee;
 		}
-
 		#messages {
 		    margin-bottom: 40px
 		}
@@ -66,11 +52,9 @@
 <script type="text/javascript">
         $(document).ready(function() {
 	var socket = io();
-
 	socket.on('connect', function() {
 		socket.send('User has connected!');
 	});
-
 	socket.on('message', function(msg) {		
                 $('#messages').append('<li style="color:green" class="bot">'+msg+'</li>');
                 window.scrollTo(0, document.body.scrollHeight);
@@ -79,18 +63,17 @@
 	$('#sendbutton').on('click', function() {
 		$('#messages').append('<li style="color:red" class="me">'+$('#myMessage').val()+'</li>');
 		socket.send($('#myMessage').val());		
-		$('#myMessage').val('');
+		
 	});
 });
 </script>
 
 <ul id="messages"></ul>
 
-<form>
-   <input type="text" id="myMessage"/>
-  	
-</form>
- <button id="sendbutton"> Send </button> 	
+
+<input type="text" id="myMessage"/>
+<button id="sendbutton"> Send </button> 	
+
 	
 </body>
 </html>
