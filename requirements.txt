@@ -2,7 +2,7 @@ Click==7.0
 Flask==1.0.2
 itsdangerous==1.1.0
 
-MarkupSafe==1.1.1
+
 Werkzeug==0.15.1
 gunicorn==19.9.0
 flask-socketio
@@ -11,3 +11,15 @@ googletrans == 2.4.0
 
 requests==2.20.1
 requests-html
+
+
+Flask-Sockets==0.2.0
+gevent==1.0.2
+gevent-websocket==0.9.5
+greenlet==0.4.9
+
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+redis==2.10.5
+
