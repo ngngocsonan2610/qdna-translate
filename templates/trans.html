@@ -56,21 +56,13 @@
 		}
 	</style>
 
-	
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>	
 </head>
 
 
 <body data-gr-c-s-loaded="true">
-<ul id="messages"></ul>
-
-<form>
-   <input type="text" id="myMessage"/>  
-</form>
-
-<button id="sendbutton"> Send </button> 
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
         $(document).ready(function() {
 	var socket = io();
@@ -92,5 +84,13 @@
 });
 </script>
 
+<ul id="messages"></ul>
+
+<form>
+   <input type="text" id="myMessage"/>
+   <button id="sendbutton"> Send </button> 	
+</form>
+	
+	
 </body>
 </html>
