@@ -43,15 +43,25 @@
 	</style>
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>	
+	
 </head>
 
 
 <body data-gr-c-s-loaded="true">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<p id='server-time'></p>
+<script src="/socket.io/socket.io.js"></script>	
+	
 <script type="text/javascript">
         $(document).ready(function() {
 	var socket = io();
+	var el = document.getElementById('server-time');
+		
+        socket.on('time', function(timeString) {
+        el.innerHTML = 'Server time: ' + timeString;
+        });	
+		
 	socket.on('connect', function() {
 		socket.send('User has connected!');
 	});
