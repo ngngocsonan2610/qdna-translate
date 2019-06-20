@@ -6,6 +6,9 @@ itsdangerous==1.1.0
 Werkzeug==0.15.1
 gunicorn==19.9.0
 flask-socketio
+socket.io
+
+
 eventlet==0.17.4
 googletrans == 2.4.0
 
