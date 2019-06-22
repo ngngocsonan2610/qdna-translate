@@ -1,9 +1,9 @@
 Flask-Script==2.0.6
-Flask-SQLAlchemy===2.1
+Flask-SQLAlchemy==2.3.2
 Flask-Migrate==1.8.0
 Flask==1.0.2
 
 googletrans
-gunicorn
+gunicorn==19.9.0
 
 
