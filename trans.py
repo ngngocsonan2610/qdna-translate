@@ -13,8 +13,6 @@ def translate(eng_text):
 
 from flask import Flask , render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-import sys
-import json
 from flask_heroku import Heroku
 
 app = Flask( __name__ )
