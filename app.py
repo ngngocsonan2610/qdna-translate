@@ -12,7 +12,7 @@ def translate(eng_text):
   return translations.text
 
 from flask import Flask , render_template, request, redirect, url_for
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 import os
 
 
