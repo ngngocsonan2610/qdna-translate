@@ -17,21 +17,28 @@ import os
 
 
 app = Flask(__name__)
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['DEBUG'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
-db.engine.execute(" DELETE FROM chat ")
+db.init_app(app)
 
 
 class Chat(db.Model):
-    __tablename__ = "dataentry"
+    __tablename__ = "chat"
     id = db.Column(db.Integer, primary_key = True)
     text = db.Column(db.String(200))
     mess_class = db.Column(db.String(10))
     
-    def __init__(self, mydata):
-      self.mydata = mydata
+    def __init__(self, id, text,mess_class):
+      self.id = id
+      self.text = text
+      self.mess_class = mess_class
+    
+db.create_all()
+db.session.commit()
+
+db.engine.execute(" DELETE FROM chat ")
     
 @app.route('/')
 def index():
@@ -56,7 +63,8 @@ def add():
     db.session.commit()
     return redirect(url_for('index'))
 
-
+if __name__ == '__main__':
+    app.run()
     
 
 
