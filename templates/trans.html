@@ -2,6 +2,10 @@
 <html>
 <head>
 	<title>QDNA Translate Bot</title>
+   	 <meta charset="UTF-8">
+
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<link href="static/bootstrap.min.css" rel="stylesheet">
 	<style>
 		* {
 		    margin: 0;
@@ -11,11 +15,13 @@
 		body {
 		    font: 20px Helvetica, Arial;
 		}
-		input {
-                                        
+
+
+		input {                   
+                                                          
 		    border: 1;
 		    padding: 10px;
-		    width: 90%;
+		    width: 86%;
 		    margin-right: .5%;
                     font: 20px;
 		}
@@ -26,6 +32,8 @@
 		    padding: 10px;
                     font: 20px;
 		}
+
+
 		#messages {
 		    list-style-type: none;
 		    margin: 0;
@@ -40,72 +48,34 @@
 		#messages {
 		    margin-bottom: 40px
 		}
-	</style>
 
+
+	</style>
 
 	
 </head>
 
 
 <body data-gr-c-s-loaded="true">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<p id='server-time'></p>
-<script src="/socket.io/socket.io.js"></script>	
-<script>
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
+	<h1>Tranlation ChatBot</h1>
 
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
+	<ul id="messages">
+		{% for chat in chats %}
+			{% if chat.mess_class == "me" %}
+			<li style="color:red" class="me">{{ chat.text }}</li>
+			{% else %}
+			<li style="color:green" class="bot">{{ chat.text }}</li>
+			{% endif %}
 
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
-});
-
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);	
-</script>
+		{% endfor %}
+	</ul>
+	<form action = "/add" method="post">
+		<input type="text" name = "nameMes" />
+		<button class="btn btn-success" type="submit">Send</button>
 	
-<script type="text/javascript">
-        $(document).ready(function() {
-	var socket = io();
-	var el = document.getElementById('server-time');
-		
-        socket.on('time', function(timeString) {
-        el.innerHTML = 'Server time: ' + timeString;
-        });	
-		
-	socket.on('connect', function() {
-		socket.send('User has connected!');
-	});
-	socket.on('message', function(msg) {		
-                $('#messages').append('<li style="color:green" class="bot">'+msg+'</li>');
-                window.scrollTo(0, document.body.scrollHeight);
-		console.log('Received message');
-	});
-	$('#sendbutton').on('click', function() {
-		$('#messages').append('<li style="color:red" class="me">'+$('#myMessage').val()+'</li>');
-		socket.send($('#myMessage').val());
-		$('#myMessage').val('');
-		
-	});
-});
-</script>
-
-<ul id="messages"></ul>
-
-
-<input type="text" id="myMessage"/>
-<button id="sendbutton"> Send </button> 	
-
+	</form>	 
 	
+
+
 </body>
 </html>
