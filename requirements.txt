@@ -1,7 +1,6 @@
 Flask-Script==2.0.6
 Flask-SQLAlchemy==2.3.2
 Flask==1.0.2
-flask_script
-flask_migrate
+flask_heroku
 googletrans
 
