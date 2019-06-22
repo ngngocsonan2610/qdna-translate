@@ -5,5 +5,5 @@ Flask==1.0.2
 
 googletrans
 gunicorn
-psycopg2==2.6.1
+
 
